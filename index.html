@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ալեն & Մարի | 20.05.2026</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+Armenian:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+        
+        :root {
+            --navy: #0A192F; 
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --light-blue: #f0f4f8;
+        }
+
+        body, html { 
+            margin: 0; padding: 0; 
+            font-family: 'Noto Sans Armenian', sans-serif; 
+            background: var(--white); 
+            color: #333; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
+        }
+
+        /* 1. Full Page Intro */
+        .intro-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            z-index: 100;
+        }
+
+        .rings-box {
+            position: relative;
+            width: 250px;
+            height: 120px;
+            margin-bottom: 30px;
+        }
+
+        .ring {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            opacity: 0;
+            transition: all 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        #ringL { left: 0; transform: translateX(-150px) rotate(-30deg); }
+        #ringR { right: 0; transform: translateX(150px) rotate(30deg); }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.8rem;
+            color: var(--navy);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 2s ease;
+            margin: 10px 0;
+        }
+
+        /* 2. Hero Banner */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.5), rgba(10, 25, 47, 0.5)), url('couple1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            line-height: 1.4;
+            max-width: 800px;
+        }
+
+        /* 3. Timer Grid */
+        .timer-section {
+            padding: 100px 20px;
+            background: var(--light-blue);
+            text-align: center;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .t-card {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 20px;
+            min-width: 80px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .t-val { font-size: 2.2rem; font-weight: 700; color: var(--navy); display: block; }
+        .t-lbl { font-size: 0.8rem; color: #999; text-transform: uppercase; margin-top: 5px; }
+
+        /* 4. Roadmap (Ճանապարհ) */
+        .roadmap-container {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        #roadWrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 1300px;
+            margin: 0 auto;
+        }
+
+        #scrollHeart {
+            position: absolute;
+            font-size: 2.5rem;
+            color: var(--navy);
+            z-index: 50;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 5. Image Frames */
+        .img-block {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .frame {
+            width: 100%;
+            max-width: 400px;
+            height: 550px;
+            margin: 0 auto 30px;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 10px solid white;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 6. RSVP Form */
+        .rsvp-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 30px;
+            border-radius: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .inp {
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            font-size: 1rem;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 20px;
+            background: var(--navy);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgm" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+    <div class="intro-screen">
+        <div class="rings-box">
+            <svg id="ringL" class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/></svg>
+            <svg id="ringR" class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/></svg>
+        </div>
+        <h1 id="names" class="main-title">Ալեն & Մարի</h1>
+        <p id="date" style="opacity:0; letter-spacing: 6px; font-size: 1.3rem;">20 . 05 . 2026</p>
+        <button onclick="initSite()" style="margin-top: 40px; background: none; border: 1px solid #eee; padding: 12px 25px; border-radius: 30px; cursor: pointer;">
+            <i id="pIcon" class="fas fa-play"></i> Միացնել երաժշտությունը
+        </button>
+    </div>
+
+    <section class="hero" data-aos="fade-in">
+        <h2>Մեր կյանքի ամենակարևոր օրը մենք ցանկանում ենք անցկացնել հենց Ձեր միջավայրում</h2>
+    </section>
+
+    <section class="timer-section" data-aos="fade-up">
+        <h3 style="font-family: 'Playfair Display'; font-style: italic;">Մինչ հանդիպումը մնացել է՝</h3>
+        <div class="timer-grid">
+            <div class="t-card"><span id="d" class="t-val">00</span><span class="t-lbl">Օր</span></div>
+            <div class="t-card"><span id="h" class="t-val">00</span><span class="t-lbl">Ժամ</span></div>
+            <div class="t-card"><span id="m" class="t-val">00</span><span class="t-lbl">Րոպե</span></div>
+            <div class="t-card"><span id="s" class="t-val">00</span><span class="t-lbl">Վայրկյան</span></div>
+        </div>
+    </section>
+
+    <section class="roadmap-container">
+        <h2 style="text-align: center; font-family: 'Dancing Script'; font-size: 3.5rem; color: var(--navy); margin-bottom: 50px;">Օրվա Ծրագիրը</h2>
+        <div id="roadWrapper">
+            <i class="fas fa-heart" id="scrollHeart"></i>
+            <svg viewBox="0 0 400 1300" width="100%" height="100%" preserveAspectRatio="none">
+                <path id="roadPath" d="M200,0 L200,1300" fill="none" stroke="#e0e0e0" stroke-width="2" stroke-dasharray="12,12"/>
+            </svg>
+            
+            <div style="position: absolute; top: 0; left: 50%; transform: translateX(50px);">
+                <b style="font-size: 1.6rem;">12:00</b><br><span style="color: #666;">Փեսայի տուն</span>
+            </div>
+            <div style="position: absolute; top: 400px; left: 50%; transform: translateX(-200px); text-align: right;">
+                <b style="font-size: 1.6rem;">14:30</b><br><span style="color: #666;">Հարսի տուն</span>
+            </div>
+            <div style="position: absolute; top: 850px; left: 50%; transform: translateX(50px);">
+                <b style="font-size: 1.6rem;">16:00</b><br><span style="color: #666;">Սուրբ Գայանե Եկեղեցի</span>
+            </div>
+            <div style="position: absolute; top: 1200px; left: 50%; transform: translateX(-200px); text-align: right;">
+                <b style="font-size: 1.6rem;">18:30</b><br><span style="color: #666;">Prime Hall Ռեստորան</span>
+            </div>
+        </div>
+    </section>
+<section class="img-block" data-aos="fade-up">
+        <div class="frame"><img src="church.jpg" alt="Church"></div>
+        <h2 style="font-family: 'Playfair Display';">Պսակադրության Արարողություն</h2>
+        <p style="color: #888;">Սուրբ Գայանե Եկեղեցի, ք․ Էջմիածին</p>
+        <a href="https://maps.google.com" class="btn-submit" style="display:inline-block; width:auto; padding: 15px 50px; text-decoration: none; margin-top: 20px;">ՔԱՐՏԵԶ</a>
+    </section>
+
+    <section class="img-block" data-aos="fade-up">
+        <div class="frame"><img src="restaurant.jpg" alt="Restaurant"></div>
+        <h2 style="font-family: 'Playfair Display';">Հարսանյաց Հանդիսություն</h2>
+        <p style="color: #888;">Prime Hall, Տիչինայի 1/1</p>
+        <a href="https://maps.google.com" class="btn-submit" style="display:inline-block; width:auto; padding: 15px 50px; text-decoration: none; margin-top: 20px;">ՔԱՐՏԵԶ</a>
+    </section>
+
+    <section class="img-block" style="background: #fafafa;">
+        <h2 style="font-family: 'Dancing Script'; font-size: 3rem;">Dress Code</h2>
+        <p style="margin-bottom: 40px; color: #999;">Մենք շատ երջանիկ կլինենք տեսնել Ձեզ մեր գունային գամմայի մեջ</p>
+        <div style="display: flex; justify-content: center; gap: 40px;">
+            <div style="text-align: center;">
+                <div style="width: 70px; height: 70px; background: #0A192F; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1);"></div>
+                <small>Navy Blue</small>
+            </div>
+            <div style="text-align: center;">
+                <div style="width: 70px; height: 70px; background: #000; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1);"></div>
+                <small>Black</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="img-block" data-aos="zoom-in">
+        <div class="frame" style="height: 600px; max-width: 450px;"><img src="couple2.jpg"></div>
+    </section>
+
+    <section class="img-block" style="background: white; padding-bottom: 120px;">
+        <div class="rsvp-box" data-aos="fade-up">
+            <h2 style="font-family: 'Dancing Script'; font-size: 3.5rem; color: var(--navy); margin-bottom: 10px;">RSVP</h2>
+            <p style="color: #999; margin-bottom: 40px;">Խնդրում ենք հաստատել Ձեր ներկայությունը մինչև 10.05.2026</p>
+            <form>
+                <input type="text" class="inp" placeholder="Անուն Ազգանուն" required>
+                <select class="inp" required>
+                    <option value="" disabled selected>Ում կողմից եք հրավիրված</option>
+                    <option>Հարսի</option>
+                    <option>Փեսայի</option>
+                </select>
+                <input type="number" class="inp" placeholder="Հյուրերի քանակը" min="1" required>
+                <button type="submit" class="btn-submit">ՀԱՍՏԱՏԵԼ</button>
+            </form>
+        </div>
+    </section>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        const audio = document.getElementById('bgm');
+        function initSite() {
+            if(audio.paused) { audio.play(); document.getElementById('pIcon').className = 'fas fa-pause'; }
+            else { audio.pause(); document.getElementById('pIcon').className = 'fas fa-play'; }
+        }
+
+        // Intro Sequence
+        window.onload = () => {
+            const rL = document.getElementById('ringL');
+            const rR = document.getElementById('ringR');
+            const nm = document.getElementById('names');
+            const dt = document.getElementById('date');
+
+            setTimeout(() => {
+                rL.style.opacity = '1'; rL.style.transform = 'translateX(65px) rotate(-10deg)';
+                rR.style.opacity = '1'; rR.style.transform = 'translateX(-65px) rotate(10deg)';
+            }, 600);
+
+            setTimeout(() => {
+                nm.style.opacity = '1'; nm.style.transform = 'translateY(0)';
+            }, 2800);
+
+            setTimeout(() => {
+                dt.style.opacity = '1';
+            }, 3800);
+        };
+
+        // Roadmap Heart Movement
+        window.addEventListener('scroll', () => {
+            const road = document.getElementById('roadWrapper'), pin = document.getElementById('scrollHeart'), path = document.getElementById('roadPath');
+            const rect = road.getBoundingClientRect();
+            let progress = (window.innerHeight / 2 - rect.top) / rect.height;
+            progress = Math.max(0, Math.min(1, progress));
+            const point = path.getPointAtLength(progress * path.getTotalLength());
+            pin.style.left = (point.x / 400) * road.offsetWidth + 'px';
+            pin.style.top = (point.y / 1300) * road.offsetHeight + 'px';
+        });
+
+        // Countdown Timer Logic
+        const target = new Date("May 20, 2026 18:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = target - now;
+            if (diff > 0) {
+                document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
