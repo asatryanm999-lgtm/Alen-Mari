@@ -9,45 +9,44 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+Armenian:wght@300;400;700&display=swap');
         
-        :root { --navy: #0A192F; --gold: #D4AF37; --white: #FFFFFF; }
+        :root { --navy: #0A192F; --gold: #D4AF37; --white: #FFFFFF; --blue: #1A5F7A; }
         body, html { margin: 0; padding: 0; font-family: 'Noto Sans Armenian', sans-serif; background: var(--white); color: #333; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Intro Անիմացիա */
+        .cursive { font-family: 'Dancing Script', cursive; }
+
+        /* Intro */
         .intro-screen { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
         .rings-box { position: relative; width: 160px; height: 80px; margin-bottom: 20px; }
-        .ring { position: absolute; width: 65px; height: 65px; fill: none; stroke: var(--gold); stroke-width: 1.5; opacity: 0; transition: 2.5s ease-out; }
-        #ringL { left: 0; transform: translateX(-100px); }
-        #ringR { right: 0; transform: translateX(100px); }
-        .main-title { font-family: 'Dancing Script', cursive; font-size: 3.2rem; color: var(--navy); opacity: 0; transform: scale(0.8); transition: 2s ease; }
+        .ring { position: absolute; width: 65px; height: 65px; fill: none; stroke: var(--gold); stroke-width: 1.5; opacity: 0; transition: 2.5s ease; }
+        #ringL { left: 0; transform: translateX(-80px); }
+        #ringR { right: 0; transform: translateX(80px); }
 
-        /* Ձեռագիր Տեքստի Ոճը */
-        .cursive-text { font-family: 'Dancing Script', cursive; color: var(--navy); }
-        .hero-title { font-size: 2.2rem; line-height: 1.4; padding: 0 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        /* Hero - Սպիտակ ձեռագիր տեքստով */
+        .hero { height: 85vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('couple1.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; }
+        .hero h2 { font-size: 2.5rem; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-        /* Sections */
-        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('couple1.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-        .section-padding { padding: 100px 20px; text-align: center; }
+        .section-padding { padding: 80px 20px; text-align: center; }
 
         /* Թայմեր */
-        .timer-grid { display: flex; justify-content: center; gap: 12px; padding: 40px 0; }
-        .t-card { background: #fdfbf7; padding: 15px 10px; border-radius: 15px; min-width: 75px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border: 1px solid var(--gold); }
-        .t-val { font-size: 1.8rem; font-weight: 700; color: var(--navy); display: block; }
+        .timer-grid { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .t-card { background: #f9f9f9; padding: 15px 5px; border-radius: 12px; min-width: 70px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .t-val { font-size: 1.6rem; font-weight: 700; color: var(--navy); display: block; }
 
-        /* Roadmap */
-        #roadWrapper { position: relative; width: 100%; max-width: 320px; height: 1200px; margin: 40px auto; }
-        #scrollHeart { position: absolute; font-size: 2.5rem; color: #e91e63; z-index: 50; transform: translate(-50%, -50%); text-shadow: 0 0 15px rgba(233,30,99,0.5); }
-        .road-text { position: absolute; font-size: 1rem; width: 140px; background: rgba(255,255,255,0.8); padding: 10px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        /* Roadmap - ԿԱՊՈՒՅՏ ՍՐՏԻԿՈՎ */
+        #roadWrapper { position: relative; width: 100%; max-width: 320px; height: 1200px; margin: 0 auto; }
+        #scrollHeart { position: absolute; font-size: 2.2rem; color: var(--blue); z-index: 50; transform: translate(-50%, -50%); }
+        .road-text { position: absolute; font-size: 0.9rem; width: 130px; line-height: 1.4; }
 
-        /* Նկարների Շրջանակներ */
-        .frame { width: 90%; max-width: 350px; height: 500px; margin: 0 auto 30px; border-radius: 30px; overflow: hidden; border: 8px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.15); transform: rotate(-2deg); transition: 0.5s; }
-        .frame:nth-child(even) { transform: rotate(2deg); }
+        /* Dress Code */
+        .color-dot { width: 45px; height: 45px; border-radius: 50%; display: inline-block; margin: 10px; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+        /* Frames */
+        .frame { width: 90%; max-width: 340px; height: 480px; margin: 0 auto 25px; border-radius: 25px; overflow: hidden; border: 6px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* RSVP */
-        .rsvp-box { margin: 30px 20px; padding: 60px 25px; background: white; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 2px solid #f9f0d9; }
-        .inp, .sel { width: 100%; padding: 18px; margin-bottom: 20px; border: 1px solid #eee; border-radius: 15px; font-size: 1rem; background: #fff; appearance: none; }
-        .btn-submit { width: 100%; padding: 20px; background: var(--navy); color: white; border: none; border-radius: 15px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-submit:active { transform: scale(0.95); }
+        .rsvp-box { margin: 20px; padding: 50px 25px; background: white; border-radius: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .inp { width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 12px; font-size: 1rem; box-sizing: border-box; }
+        .btn-submit { width: 100%; padding: 18px; background: var(--navy); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -58,88 +57,89 @@
             <svg id="ringL" class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/></svg>
             <svg id="ringR" class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/></svg>
         </div>
-        <h1 id="names" class="main-title">Ալեն & Մարի</h1>
-        <p id="date" style="opacity:0; letter-spacing: 6px; font-size: 1.2rem; margin-top: 15px;">20 . 05 . 2026</p>
-        <button onclick="start()" style="margin-top:40px; background:white; border:1px solid var(--gold); padding:12px 30px; border-radius:30px; color:var(--navy); font-weight:700;">
-            <i id="pIcon" class="fas fa-play"></i> Միացնել երաժշտությունը
+        <h1 id="names" class="cursive" style="font-size: 3rem; color: var(--navy); opacity: 0;">Ալեն & Մարի</h1>
+        <button onclick="start()" style="margin-top:30px; background:none; border:1px solid #ddd; padding:10px 25px; border-radius:25px;">
+            <i id="pIcon" class="fas fa-play"></i> Երաժշտություն
         </button>
     </div>
 
     <section class="hero" data-aos="fade-in">
-        <h2 class="cursive-text hero-title">Սիրով հրավիրում ենք ձեզ, կիսելու մեր կյանքի ամենագեղեցիկ օրը</h2>
+        <h2 class="cursive">Սիրով հրավիրում ենք ձեզ, կիսելու մեր կյանքի ամենագեղեցիկ օրը</h2>
     </section>
 
     <section class="section-padding" data-aos="fade-up">
-        <h3 class="cursive-text" style="font-size: 2rem;">Մինչև հարսանիքը մնացել է</h3>
+        <h3 class="cursive" style="font-size: 2rem; color: var(--navy);">Մինչև հարսանիքը մնացել է</h3>
         <div class="timer-grid">
-            <div class="t-card"><span id="d" class="t-val">00</span><span style="font-size:0.7rem; color:#999;">Օր</span></div>
-            <div class="t-card"><span id="h" class="t-val">00</span><span style="font-size:0.7rem; color:#999;">Ժամ</span></div>
-            <div class="t-card"><span id="m" class="t-val">00</span><span style="font-size:0.7rem; color:#999;">Րոպե</span></div>
-            <div class="t-card"><span id="s" class="t-val">00</span><span style="font-size:0.7rem; color:#999;">Վրկ</span></div>
+            <div class="t-card"><span id="d" class="t-val">00</span><span>Օր</span></div>
+            <div class="t-card"><span id="h" class="t-val">00</span><span>Ժամ</span></div>
+            <div class="t-card"><span id="m" class="t-val">00</span><span>Րոպե</span></div>
+            <div class="t-card"><span id="s" class="t-val">00</span><span>Վրկ</span></div>
         </div>
     </section>
 
     <section class="roadmap-area">
-        <h2 class="cursive-text" style="text-align: center; font-size: 3.5rem; margin-bottom: 60px;">Մեր Օրը</h2>
+        <h2 class="cursive" style="text-align: center; font-size: 3rem; margin-bottom: 50px;">Ծրագիրը</h2>
         <div id="roadWrapper">
             <i class="fas fa-heart" id="scrollHeart"></i>
             <svg viewBox="0 0 400 1200" width="100%" height="100%" preserveAspectRatio="none">
-                <path id="roadPath" d="M200,0 L200,1200" fill="none" stroke="#f0f0f0" stroke-width="3" stroke-dasharray="15,15"/>
+                <path id="roadPath" d="M200,0 L200,1200" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="10,10"/>
             </svg>
-            <div class="road-text" style="top: 0; left: 55%;" data-aos="fade-left"><b>12:00</b><br>Փեսայի տուն</div>
-            <div class="road-text" style="top: 300px; right: 55%; text-align: right;" data-aos="fade-right"><b>14:30</b><br>Հարսի տուն</div>
-            <div class="road-text" style="top: 650px; left: 55%;" data-aos="fade-left"><b>16:00</b><br>Պսակադրություն<br><small>Սուրբ Գայանե</small></div>
-            <div class="road-text" style="top: 1100px; right: 55%; text-align: right;" data-aos="fade-right"><b>18:30</b><br>Հարսանյաց սրահ<br><small>Prime Hall</small></div>
+            <div class="road-text" style="top: 0; left: 55%;"><b>12:00</b><br>Փեսայի տուն</div>
+            <div class="road-text" style="top: 300px; right: 55%; text-align: right;"><b>14:30</b><br>Հարսի տուն</div>
+            <div class="road-text" style="top: 650px; left: 55%;"><b>16:00</b><br>Սուրբ Գայանե</div>
+            <div class="road-text" style="top: 1100px; right: 55%; text-align: right;"><b>18:30</b><br>Prime Hall</div>
         </div>
     </section>
 
-    <section class="section-padding">
-        <div class="frame" data-aos="zoom-in"><img src="restaurant.jpg"></div>
-        <h3 class="cursive-text" style="font-size: 2.5rem;">Prime Hall</h3>
-        <p style="color:#888;">ք. Երևան, Տիչինայի 1/1</p>
-        <a href="#" style="color:var(--gold); font-weight:700; text-decoration:none; border-bottom:1px solid;">ՏԵՍՆԵԼ ՔԱՐՏԵԶՈՒՄ</a>
+    <section class="section-padding" data-aos="fade-up">
+        <div class="frame"><img src="church.jpg"></div>
+        <h3 class="cursive" style="font-size: 2.2rem;">Սուրբ Գայանե Եկեղեցի</h3>
+        <a href="#" style="color: var(--blue); font-weight: 700; text-decoration: none;">ՔԱՐՏԵԶ</a>
+    </section>
+
+    <section class="section-padding" data-aos="fade-up">
+        <div class="frame"><img src="restaurant.jpg"></div>
+        <h3 class="cursive" style="font-size: 2.2rem;">Prime Hall</h3>
+        <a href="#" style="color: var(--blue); font-weight: 700; text-decoration: none;">ՔԱՐՏԵԶ</a>
+    </section>
+
+    <section class="section-padding" style="background: #fdfbf7;">
+        <h2 class="cursive" style="font-size: 2.5rem;">Dress Code</h2>
+        <p>Հարսանիքի գույները՝</p>
+        <div class="color-dot" style="background: #0A192F;"></div>
+        <div class="color-dot" style="background: #1A5F7A;"></div>
+        <div class="color-dot" style="background: #D4AF37;"></div>
     </section>
 
     <div class="rsvp-box" data-aos="fade-up">
-        <h2 class="cursive-text" style="text-align:center; font-size:3.5rem; margin-bottom: 10px;">RSVP</h2>
-        <p style="text-align:center; color:#888; margin-bottom:40px;">Խնդրում ենք հաստատել Ձեր ներկայությունը</p>
+        <h2 class="cursive" style="text-align:center; font-size:3rem; color: var(--navy);">RSVP</h2>
         <form>
             <input type="text" class="inp" placeholder="Անուն Ազգանուն" required>
-            
-            <select class="sel" required>
+            <select class="inp" required>
                 <option value="" disabled selected>Ում կողմից եք</option>
-                <option>Հարսի կողմից</option>
-                <option>Փեսայի կողմից</option>
+                <option>Հարսի</option>
+                <option>Փեսայի</option>
             </select>
-
             <input type="number" class="inp" placeholder="Հյուրերի քանակը" required>
-            
             <button type="submit" class="btn-submit">ՀԱՍՏԱՏԵԼ</button>
         </form>
     </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: false });
-
+        AOS.init({ duration: 1000, once: true });
         function start() {
             const a = document.getElementById('bgm');
             if(a.paused) { a.play(); document.getElementById('pIcon').className = 'fas fa-pause'; }
             else { a.pause(); document.getElementById('pIcon').className = 'fas fa-play'; }
         }
-
         window.onload = () => {
             const rl = document.getElementById('ringL'), rr = document.getElementById('ringR');
             setTimeout(() => {
-                rl.style.opacity = '1'; rl.style.transform = 'translateX(38px) rotate(0deg)';
-                rr.style.opacity = '1'; rr.style.transform = 'translateX(-38px) rotate(0deg)';
-            }, 800);
-            setTimeout(() => { 
-                document.getElementById('names').style.opacity = '1'; 
-                document.getElementById('names').style.transform = 'scale(1)';
-                document.getElementById('date').style.opacity = '1'; 
-            }, 2800);
+                rl.style.opacity = '1'; rl.style.transform = 'translateX(35px)';
+                rr.style.opacity = '1'; rr.style.transform = 'translateX(-35px)';
+            }, 600);
+            setTimeout(() => { document.getElementById('names').style.opacity = '1'; }, 2500);
         };
-
         window.addEventListener('scroll', () => {
             const road = document.getElementById('roadWrapper'), pin = document.getElementById('scrollHeart'), path = document.getElementById('roadPath');
             const rect = road.getBoundingClientRect();
@@ -148,9 +148,7 @@
             const pt = path.getPointAtLength(p * path.getTotalLength());
             pin.style.left = (pt.x / 400) * road.offsetWidth + 'px';
             pin.style.top = (pt.y / 1200) * road.offsetHeight + 'px';
-            pin.style.transform = `translate(-50%, -50%) scale(${1 + Math.sin(Date.now()/200)*0.2})`;
         });
-
         const target = new Date("May 20, 2026 18:00:00").getTime();
         setInterval(() => {
             const diff = target - new Date().getTime();
