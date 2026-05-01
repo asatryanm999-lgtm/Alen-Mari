@@ -3,122 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ալեն & Մարի | 20.05.2026</title>
+    <title>Ալեն & Մարի | 15.06.2026</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+Armenian:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Noto+Sans+Armenian:wght@300;400;700&display=swap');
         
-        :root { --navy: #0A192F; --gold: #D4AF37; --white: #FFFFFF; --blue: #1A5F7A; }
-        body, html { margin: 0; padding: 0; font-family: 'Noto Sans Armenian', sans-serif; background: var(--white); color: #333; overflow-x: hidden; scroll-behavior: smooth; }
+        :root { 
+            --navy: #0A192F; 
+            --gold: #D4AF37; 
+            --blue-heart: #1A5F7A; 
+            --soft-bg: #fdfbf7;
+        }
+
+        body, html { 
+            margin: 0; padding: 0; 
+            font-family: 'Noto Sans Armenian', sans-serif; 
+            background: #fff; color: #333; 
+            overflow-x: hidden; scroll-behavior: smooth; 
+        }
 
         .cursive { font-family: 'Dancing Script', cursive; }
 
-        /* Intro */
-        .intro-screen { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        /* Ինտրոյի սահուն անիմացիա */
+        .intro-screen {
+            height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: #fff; position: fixed; width: 100%; top: 0; z-index: 9999;
+            transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1);
+        }
         .rings-box { position: relative; width: 160px; height: 80px; margin-bottom: 20px; }
-        .ring { position: absolute; width: 65px; height: 65px; fill: none; stroke: var(--gold); stroke-width: 1.5; opacity: 0; transition: 2.5s ease; }
-        #ringL { left: 0; transform: translateX(-80px); }
-        #ringR { right: 0; transform: translateX(80px); }
+        .ring { 
+            position: absolute; width: 70px; height: 70px; fill: none; 
+            stroke: var(--gold); stroke-width: 1.2; opacity: 0; 
+            transition: 2.5s cubic-bezier(0.2, 1, 0.3, 1); 
+        }
+        #ringL { left: 5px; transform: translateX(-60px) rotate(-20deg); }
+        #ringR { right: 5px; transform: translateX(60px) rotate(20deg); }
 
-        /* Hero - Սպիտակ ձեռագիր տեքստով */
-        .hero { height: 85vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('couple1.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; }
-        .hero h2 { font-size: 2.5rem; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        /* Hero Section - Սպիտակ նուրբ տեքստով */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('couple1.jpg');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .hero h2 { font-size: 2rem; font-weight: 400; padding: 0 25px; line-height: 1.5; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-        .section-padding { padding: 80px 20px; text-align: center; }
+        /* Թայմերի ոճը */
+        .timer-section { padding: 80px 20px; text-align: center; background: var(--soft-bg); }
+        .timer-grid { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+        .t-card { min-width: 70px; padding: 15px 5px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .t-val { font-size: 1.8rem; color: var(--navy); font-weight: 700; display: block; }
+        .t-lbl { font-size: 0.75rem; color: #aaa; text-transform: uppercase; }
 
-        /* Թայմեր */
-        .timer-grid { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-        .t-card { background: #f9f9f9; padding: 15px 5px; border-radius: 12px; min-width: 70px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .t-val { font-size: 1.6rem; font-weight: 700; color: var(--navy); display: block; }
-
-        /* Roadmap - ԿԱՊՈՒՅՏ ՍՐՏԻԿՈՎ */
+        /* Ճանապարհի (Roadmap) երկար հատվածը */
+        .roadmap-area { padding: 100px 0; background: #fff; }
         #roadWrapper { position: relative; width: 100%; max-width: 320px; height: 1200px; margin: 0 auto; }
-        #scrollHeart { position: absolute; font-size: 2.2rem; color: var(--blue); z-index: 50; transform: translate(-50%, -50%); }
-        .road-text { position: absolute; font-size: 0.9rem; width: 130px; line-height: 1.4; }
+        #scrollHeart { position: absolute; font-size: 2.3rem; color: var(--blue-heart); z-index: 50; transform: translate(-50%, -50%); filter: drop-shadow(0 0 10px rgba(26, 95, 122, 0.3)); }
+        .road-text { position: absolute; font-size: 0.95rem; width: 135px; background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #f9f9f9; }
 
-        /* Dress Code */
-        .color-dot { width: 45px; height: 45px; border-radius: 50%; display: inline-block; margin: 10px; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-
-        /* Frames */
-        .frame { width: 90%; max-width: 340px; height: 480px; margin: 0 auto 25px; border-radius: 25px; overflow: hidden; border: 6px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        /* Լուսանկարների շրջանակներ */
+        .section-padding { padding: 90px 20px; text-align: center; }
+        .frame { width: 90%; max-width: 350px; height: 500px; margin: 0 auto 25px; border-radius: 30px; overflow: hidden; border: 8px solid white; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .rsvp-box { margin: 20px; padding: 50px 25px; background: white; border-radius: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid #eee; }
-        .inp { width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 12px; font-size: 1rem; box-sizing: border-box; }
-        .btn-submit { width: 100%; padding: 18px; background: var(--navy); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; }
+        /* RSVP Ֆորմա */
+        .rsvp-box { margin: 20px; padding: 60px 25px; background: white; border-radius: 35px; box-shadow: 0 15px 50px rgba(0,0,0,0.07); border: 1px solid #eee; }
+        .inp { width: 100%; padding: 18px; margin-bottom: 20px; border: 1px solid #eee; border-radius: 15px; font-size: 1rem; box-sizing: border-box; background: #fdfdfd; }
+        .btn-submit { width: 100%; padding: 20px; background: var(--navy); color: white; border: none; border-radius: 15px; font-size: 1.1rem; font-weight: 700; cursor: pointer; }
     </style>
 </head>
 <body>
     <audio id="bgm" loop><source src="music.mp3" type="audio/mpeg"></audio>
 
-    <div class="intro-screen">
+    <div class="intro-screen" id="intro">
         <div class="rings-box">
             <svg id="ringL" class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/></svg>
             <svg id="ringR" class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/></svg>
         </div>
-        <h1 id="names" class="cursive" style="font-size: 3rem; color: var(--navy); opacity: 0;">Ալեն & Մարի</h1>
-        <button onclick="start()" style="margin-top:30px; background:none; border:1px solid #ddd; padding:10px 25px; border-radius:25px;">
-            <i id="pIcon" class="fas fa-play"></i> Երաժշտություն
-        </button>
+        <h1 id="namesIntro" class="cursive" style="opacity:0; transition: 2s; color: var(--navy); font-size: 2.8rem;">Ալեն & Մարի</h1>
+        <p id="iDate" style="opacity:0; transition: 2s; letter-spacing: 5px; color: var(--gold);">15 . 06 . 2026</p>
     </div>
 
-    <section class="hero" data-aos="fade-in">
-        <h2 class="cursive">Սիրով հրավիրում ենք ձեզ, կիսելու մեր կյանքի ամենագեղեցիկ օրը</h2>
+    <section class="hero">
+        <h2 class="cursive" data-aos="fade-up">Սիրով հրավիրում ենք ձեզ,<br>կիսելու մեր կյանքի<br>ամենագեղեցիկ օրը</h2>
     </section>
 
-    <section class="section-padding" data-aos="fade-up">
-        <h3 class="cursive" style="font-size: 2rem; color: var(--navy);">Մինչև հարսանիքը մնացել է</h3>
-        <div class="timer-grid">
-            <div class="t-card"><span id="d" class="t-val">00</span><span>Օր</span></div>
-            <div class="t-card"><span id="h" class="t-val">00</span><span>Ժամ</span></div>
-            <div class="t-card"><span id="m" class="t-val">00</span><span>Րոպե</span></div>
-            <div class="t-card"><span id="s" class="t-val">00</span><span>Վրկ</span></div>
+    <section class="timer-section">
+        <h3 class="cursive" style="font-size: 1.8rem; color: var(--navy); margin-bottom: 10px;">15 Հունիսի 2026</h3>
+        <div class="timer-grid" data-aos="zoom-in">
+            <div class="t-card"><span id="days" class="t-val">00</span><span class="t-lbl">Օր</span></div>
+            <div class="t-card"><span id="hours" class="t-val">00</span><span class="t-lbl">Ժամ</span></div>
+            <div class="t-card"><span id="mins" class="t-val">00</span><span class="t-lbl">Րոպե</span></div>
+            <div class="t-card"><span id="secs" class="t-val">00</span><span class="t-lbl">Վրկ</span></div>
         </div>
+        <button onclick="toggleMusic()" style="margin-top: 35px; background: none; border: 1px solid #ddd; padding: 10px 25px; border-radius: 25px; color: #888; font-size: 0.8rem; cursor: pointer;">
+            <i id="pIcon" class="fas fa-play"></i> Երաժշտություն
+        </button>
     </section>
 
     <section class="roadmap-area">
-        <h2 class="cursive" style="text-align: center; font-size: 3rem; margin-bottom: 50px;">Ծրագիրը</h2>
+        <h2 class="cursive" style="text-align: center; font-size: 2.8rem; margin-bottom: 60px;" data-aos="fade-up">Օրվա Ծրագիրը</h2>
         <div id="roadWrapper">
             <i class="fas fa-heart" id="scrollHeart"></i>
             <svg viewBox="0 0 400 1200" width="100%" height="100%" preserveAspectRatio="none">
-                <path id="roadPath" d="M200,0 L200,1200" fill="none" stroke="#eee" stroke-width="2" stroke-dasharray="10,10"/>
+                <path id="roadPath" d="M200,0 L200,1200" fill="none" stroke="#f0f0f0" stroke-width="2" stroke-dasharray="12,12"/>
             </svg>
-            <div class="road-text" style="top: 0; left: 55%;"><b>12:00</b><br>Փեսայի տուն</div>
-            <div class="road-text" style="top: 300px; right: 55%; text-align: right;"><b>14:30</b><br>Հարսի տուն</div>
-            <div class="road-text" style="top: 650px; left: 55%;"><b>16:00</b><br>Սուրբ Գայանե</div>
-            <div class="road-text" style="top: 1100px; right: 55%; text-align: right;"><b>18:30</b><br>Prime Hall</div>
+            <div class="road-text" style="top: 0; left: 55%;" data-aos="fade-left"><b>12:00</b><br>Փեսայի տուն</div>
+            <div class="road-text" style="top: 300px; right: 55%; text-align: right;" data-aos="fade-right"><b>14:30</b><br>Հարսի տուն</div>
+            <div class="road-text" style="top: 700px; left: 55%;" data-aos="fade-left"><b>16:00</b><br>Սուրբ Գայանե</div>
+            <div class="road-text" style="top: 1150px; right: 55%; text-align: right;" data-aos="fade-right"><b>18:30</b><br>Prime Hall</div>
         </div>
     </section>
 
     <section class="section-padding" data-aos="fade-up">
-        <div class="frame"><img src="church.jpg"></div>
+        <div class="frame"><img src="church.jpg" alt="Church"></div>
         <h3 class="cursive" style="font-size: 2.2rem;">Սուրբ Գայանե Եկեղեցի</h3>
-        <a href="#" style="color: var(--blue); font-weight: 700; text-decoration: none;">ՔԱՐՏԵԶ</a>
+        <p style="color: #999; letter-spacing: 2px; font-size: 0.8rem;">ԷՋՄԻԱԾԻՆ</p>
+        <a href="#" style="color: var(--navy); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--gold);">ՔԱՐՏԵԶ</a>
     </section>
 
     <section class="section-padding" data-aos="fade-up">
-        <div class="frame"><img src="restaurant.jpg"></div>
+        <div class="frame"><img src="restaurant.jpg" alt="Restaurant"></div>
         <h3 class="cursive" style="font-size: 2.2rem;">Prime Hall</h3>
-        <a href="#" style="color: var(--blue); font-weight: 700; text-decoration: none;">ՔԱՐՏԵԶ</a>
+        <p style="color: #999; letter-spacing: 2px; font-size: 0.8rem;">ԵՐԵՎԱՆ, ՏԻՉԻՆԱՅԻ 1/1</p>
+        <a href="#" style="color: var(--navy); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--gold);">ՔԱՐՏԵԶ</a>
     </section>
 
-    <section class="section-padding" style="background: #fdfbf7;">
-        <h2 class="cursive" style="font-size: 2.5rem;">Dress Code</h2>
-        <p>Հարսանիքի գույները՝</p>
+    <section class="section-padding" style="background: #fafafa;" data-aos="zoom-in">
+        <h3 class="cursive" style="font-size: 2.2rem;">Dress Code</h3>
+        <p style="color: #888; margin-bottom: 30px;">Հարսանիքի գունային գամման</p>
         <div class="color-dot" style="background: #0A192F;"></div>
-        <div class="color-dot" style="background: #1A5F7A;"></div>
+        <div class="color-dot" style="background: #000;"></div>
         <div class="color-dot" style="background: #D4AF37;"></div>
     </section>
 
     <div class="rsvp-box" data-aos="fade-up">
-        <h2 class="cursive" style="text-align:center; font-size:3rem; color: var(--navy);">RSVP</h2>
+        <h3 class="cursive" style="text-align:center; font-size: 2.8rem; color: var(--navy);">RSVP</h3>
+        <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Խնդրում ենք հաստատել մինչև 01.06.26</p>
         <form>
             <input type="text" class="inp" placeholder="Անուն Ազգանուն" required>
             <select class="inp" required>
                 <option value="" disabled selected>Ում կողմից եք</option>
-                <option>Հարսի</option>
-                <option>Փեսայի</option>
+                <option>Հարսի կողմից</option>
+                <option>Փեսայի կողմից</option>
             </select>
             <input type="number" class="inp" placeholder="Հյուրերի քանակը" required>
             <button type="submit" class="btn-submit">ՀԱՍՏԱՏԵԼ</button>
@@ -126,39 +156,55 @@
     </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-        function start() {
-            const a = document.getElementById('bgm');
-            if(a.paused) { a.play(); document.getElementById('pIcon').className = 'fas fa-pause'; }
-            else { a.pause(); document.getElementById('pIcon').className = 'fas fa-play'; }
-        }
+        AOS.init({ duration: 1200, once: true });
+
+        // Ինտրո անիմացիայի հերթականությունը
         window.onload = () => {
-            const rl = document.getElementById('ringL'), rr = document.getElementById('ringR');
+            const rl = document.getElementById('ringL'), rr = document.getElementById('ringR'), 
+                  names = document.getElementById('namesIntro'), iDate = document.getElementById('iDate'),
+                  intro = document.getElementById('intro');
+            
             setTimeout(() => {
-                rl.style.opacity = '1'; rl.style.transform = 'translateX(35px)';
-                rr.style.opacity = '1'; rr.style.transform = 'translateX(-35px)';
-            }, 600);
-            setTimeout(() => { document.getElementById('names').style.opacity = '1'; }, 2500);
+                rl.style.opacity = '1'; rl.style.transform = 'translateX(35px) rotate(0deg)';
+                rr.style.opacity = '1'; rr.style.transform = 'translateX(-35px) rotate(0deg)';
+            }, 500);
+
+            setTimeout(() => { names.style.opacity = '1'; iDate.style.opacity = '1'; }, 2200);
+            setTimeout(() => { intro.style.transform = 'translateY(-100%)'; }, 4500);
         };
+
+        // Սլացող կապույտ սրտիկի տրամաբանությունը
         window.addEventListener('scroll', () => {
             const road = document.getElementById('roadWrapper'), pin = document.getElementById('scrollHeart'), path = document.getElementById('roadPath');
             const rect = road.getBoundingClientRect();
             let p = (window.innerHeight / 2 - rect.top) / rect.height;
             p = Math.max(0, Math.min(1, p));
-            const pt = path.getPointAtLength(p * path.getTotalLength());
+            
+            const totalLength = path.getTotalLength();
+            const pt = path.getPointAtLength(p * totalLength);
+            
             pin.style.left = (pt.x / 400) * road.offsetWidth + 'px';
             pin.style.top = (pt.y / 1200) * road.offsetHeight + 'px';
         });
-        const target = new Date("May 20, 2026 18:00:00").getTime();
+
+        // Թայմեր մինչև 15.06.2026
+        const target = new Date("June 15, 2026 18:00:00").getTime();
         setInterval(() => {
             const diff = target - new Date().getTime();
             if (diff > 0) {
-                document.getElementById('d').innerText = Math.floor(diff / 86400000).toString().padStart(2, '0');
-                document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2, '0');
-                document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
-                document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
             }
         }, 1000);
+
+        // Երաժշտության միացնել/անջատելը
+        function toggleMusic() {
+            const a = document.getElementById('bgm'), icon = document.getElementById('pIcon');
+            if(a.paused) { a.play(); icon.className = 'fas fa-pause'; }
+            else { a.pause(); icon.className = 'fas fa-play'; }
+        }
     </script>
 </body>
 </html>
